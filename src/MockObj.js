@@ -1,3 +1,4 @@
+
 const mockObject = {
   response: {
     version: '0.1',
