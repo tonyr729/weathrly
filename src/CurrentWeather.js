@@ -9,12 +9,30 @@ class CurrentWeather extends Component {
     this.state = { mockObj }
   }
 
+  createSevenDayArray = () => {
+    return mockObj.hourly_forecast.reduce((cleanArray, hourObj, index) => {
+      if (index < 7) {
+        let newObj = { hour: hourObj.FCTTIME.hour, 
+                       icon: hourObj.icon_url, 
+                       temp: hourObj.temp.english };
+        cleanArray.push(newObj);
+      }
+      return cleanArray;
+    }, []);
+  }
+  
+  
+  
+  
+
+
+
   render() {
     return (
       <div>
         <h1>Current Weather</h1>
         <button>Toggle Outlook</button>
-        <SevenHour /> 
+        <SevenHour data={this.createSevenDayArray()}/> 
         <TenDay />
       </div>
     )
