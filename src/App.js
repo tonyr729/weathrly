@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Search from './Search';
 import CurrentWeather from './CurrentWeather';
 import logo from './logo.svg';
-import './App.css';
 
 class App extends Component {
   render() {
