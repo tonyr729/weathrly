@@ -1,5 +1,36 @@
-.location-day-info {
-  float: right;
-  margin: 2rem; }
+.current-weather {
+  grid-area: 1/1/3/3;
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  grid-template-columns: 1fr 1fr; }
+  .current-weather .selected-location {
+    grid-area: 1/2/2/3;
+    margin: 1.5rem;
+    text-align: right;
+    font-size: 2.2rem;
+    font-weight: 400; }
+  .current-weather .current-weather-info {
+    grid-area: 2/1/3/2; }
+    .current-weather .current-weather-info h1 {
+      font-size: 14rem;
+      font-weight: 300;
+      text-align: center;
+      margin: 0; }
+    .current-weather .current-weather-info p {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-top: 0; }
+  .current-weather .current-day-forecast {
+    grid-area: 2/2/3/3; }
+    .current-weather .current-day-forecast h4 {
+      font-size: 3rem;
+      font-weight: 300;
+      margin-bottom: 10px;
+      margin-top: 43px; }
+    .current-weather .current-day-forecast .day-high-low {
+      font-size: 2rem; }
+    .current-weather .current-day-forecast .day-summary {
+      font-size: 1.3rem;
+      font-weight: 300; }
 
 /*# sourceMappingURL=CurrentWeather.css.map */

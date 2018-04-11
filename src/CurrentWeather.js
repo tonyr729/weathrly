@@ -1,85 +1,21 @@
-import React, {Component} from 'react';
-import SevenHour from './SevenHour';
-import TenDay from './TenDay';
-import mockObj from './MockObj';
+import React from 'react';
 
-class CurrentWeather extends Component {
-  constructor() {
-    super()
-    this.state = {
-      //location input (passed as prop from App.js),
-      //7hour/10day toggle
-    }
-    this.currentDayObject = {
-      location: mockObj.current_observation.display_location.full,
-      currentInfo: {
-        day: mockObj.forecast.txt_forecast.forecastday[0].title,
-        condition: mockObj.current_observation.weather,
-        temp: mockObj.current_observation.temp_f,
-        icon: mockObj.current_observation.icon_url
-      },
-      forecast: {
-        high: mockObj.forecast.simpleforecast.forecastday[0].high.fahrenheit,
-        low: mockObj.forecast.simpleforecast.forecastday[0].low.fahrenheit,
-        summary: mockObj.forecast.txt_forecast.forecastday[0].fcttext_metric
-      }
-    }
-  }
-
-  createSevenHourArray = () => {
-    return mockObj.hourly_forecast.reduce((cleanArray, hourObj, index) => {
-      if (index < 7) {
-        let newObj = {
-          hour: hourObj.FCTTIME.civil, 
-          icon: hourObj.icon_url, 
-          temp: hourObj.temp.english 
-        };
-        cleanArray.push(newObj);
-      }
-      return cleanArray;
-    }, []);
-  }
-  
-  createTenDayArray = () => {
-    return mockObj.forecast.simpleforecast.forecastday.map(day => {
-      return {
-        day: day.date.weekday,
-        icon: day.icon_url,
-        high: day.high.fahrenheit,
-        low: day.low.fahrenheit
-      }
-    });
-  };
-  
-  render() {
-    return (
-      <div>
-        <section className="location-day-info">
-          <h2 className="selected-location">{this.currentDayObject.location}</h2>
-          <h4 className="current-day">{this.currentDayObject.currentInfo.day}</h4>
-        </section>
-        <section className="current-weather-info">
-          <h1>{this.currentDayObject.currentInfo.temp}</h1>
-          <p>{this.currentDayObject.currentInfo.condition}</p>
-          <img src={this.currentDayObject.currentInfo.icon} />
-        </section>
-        <section className="current-day-forecast">
-          <p>{this.currentDayObject.forecast.high}</p>
-          <p>{this.currentDayObject.forecast.low}</p>
-          <p>{this.currentDayObject.forecast.summary}</p>
-        </section>
-        <section className="forecast-cards">
-          <button>Toggle Outlook</button>
-          <SevenHour data={this.createSevenHourArray()}/> 
-          <TenDay data={this.createTenDayArray()}/>
-        </section>
-      </div>
-    )
-  }
+const CurrentWeather = ({ currentWeather }) => {
+  return (
+    <div className="current-weather">
+      <h2 className="selected-location">{currentWeather.location}</h2>
+      <section className="current-weather-info">
+        <h1>{currentWeather.currentInfo.temp}</h1>
+        <p>{currentWeather.currentInfo.condition}</p>
+        <img src={currentWeather.currentInfo.icon} />
+      </section>
+      <section className="current-day-forecast">
+        <h4>{currentWeather.currentInfo.day}</h4>
+        <p className="day-high-low">High: {currentWeather.forecast.high} / Low: {currentWeather.forecast.low}</p>
+        <p className="day-summary">{currentWeather.forecast.summary}</p>
+      </section>
+    </div>
+  )
 }
 
 export default CurrentWeather;
-
-
-//<SevenHour /> needs prop of an array with objects - each object is an hour with properties of the hour(title), image(icon), temp(high)
-//<TenDay /> needs prop of an array with objects - each object is a day with properties of the day(title), image(icon), high(high), low(low)

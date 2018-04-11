@@ -1,5 +1,6 @@
 .search {
-  margin: 1rem;
+  grid-area: 1/1/2/2;
+  margin: 1.5rem;
   float: left;
   height: 2.5rem;
   width: 40vw; }
