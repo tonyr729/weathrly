@@ -54,17 +54,25 @@ class CurrentWeather extends Component {
   render() {
     return (
       <div>
-        <h2>{this.currentDayObject.location}</h2>
-        <h1>{this.currentDayObject.currentInfo.temp}</h1>
-        <p>{this.currentDayObject.currentInfo.condition}</p>
-        <p>{this.currentDayObject.currentInfo.day}</p>
-        <img src={this.currentDayObject.currentInfo.icon} />
-        <p>{this.currentDayObject.forecast.high}</p>
-        <p>{this.currentDayObject.forecast.low}</p>
-        <p>{this.currentDayObject.forecast.summary}</p>
-        <button>Toggle Outlook</button>
-        <SevenHour data={this.createSevenHourArray()}/> 
-        <TenDay data={this.createTenDayArray()}/>
+        <section className="location-day-info">
+          <h2 className="selected-location">{this.currentDayObject.location}</h2>
+          <h4 className="current-day">{this.currentDayObject.currentInfo.day}</h4>
+        </section>
+        <section className="current-weather-info">
+          <h1>{this.currentDayObject.currentInfo.temp}</h1>
+          <p>{this.currentDayObject.currentInfo.condition}</p>
+          <img src={this.currentDayObject.currentInfo.icon} />
+        </section>
+        <section className="current-day-forecast">
+          <p>{this.currentDayObject.forecast.high}</p>
+          <p>{this.currentDayObject.forecast.low}</p>
+          <p>{this.currentDayObject.forecast.summary}</p>
+        </section>
+        <section className="forecast-cards">
+          <button>Toggle Outlook</button>
+          <SevenHour data={this.createSevenHourArray()}/> 
+          <TenDay data={this.createTenDayArray()}/>
+        </section>
       </div>
     )
   }
