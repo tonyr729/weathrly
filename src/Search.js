@@ -8,8 +8,8 @@ class Search extends Component {
 
   render() {
     return (
-      <div>
-        <input></input>
+      <div className="search">
+        <input placeholder="Enter your location"></input>
         <button>Search</button>
       </div>
     )
