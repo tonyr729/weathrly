@@ -7,7 +7,7 @@ const SevenHour = (props) => {
   })
   
   return (
-    <div className="sevenHour">
+    <div className="seven-hour">
       <ul>
       {sevenHourArray}
       </ul>

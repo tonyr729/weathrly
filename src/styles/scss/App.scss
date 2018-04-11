@@ -1,4 +1,12 @@
 body {
+  background: linear-gradient(
+    rgba(white, 0.5),
+    rgba(white, 0.5)
+  ),
+    url('../assets/yos.jpeg');
+  background-size: 2000px;
+  background-repeat: no-repeat;
+  height: 60vh;
   margin: 0;
   padding: 0;
   font-family: sans-serif;

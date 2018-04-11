@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,QAAS;EACP,OAAO,EAAE,IAAI",
+"sources": ["../scss/TenDay.scss"],
+"names": [],
+"file": "TenDay.css"
+}

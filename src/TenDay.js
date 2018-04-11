@@ -7,7 +7,7 @@ const TenDay = (props) => {
   })
 
   return (
-    <div className="tenDay">
+    <div className="ten-day">
       <ul>
         {tenDayArray}
       </ul>
