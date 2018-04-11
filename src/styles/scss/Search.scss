@@ -1,0 +1,32 @@
+.search {
+  margin: 1rem;
+  float: left;
+  height: 2.5rem;
+  width: 40vw;
+  
+
+  input {
+    width: 80%;
+    height: 100%;
+    border: none;
+    font-size: 1.5rem;
+
+    &::placeholder {
+      font-size: 1.5rem;
+      padding-left: 1rem;
+      color: lighten(#000, 85%)
+
+    }
+  }
+
+  button {
+    width: 20%;
+    height: 100%;
+    border: none;
+    border-left: 0.1rem solid lightgrey;
+    outline: 1px solid #fff;
+    font-size: 1.5rem;
+    color: lighten(#000, 60%)
+    
+  }
+}
