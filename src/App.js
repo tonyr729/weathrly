@@ -13,19 +13,18 @@ class App extends Component {
     super()
     this.state = {
       rendered: false,
-      apiData: mockObj,
-      city: 'San_Francisco',
-      state: 'CA'
+      apiData: {},
+      city: 'Denver',
+      state: 'CO'
       //7hour/10day toggle
     }
-    // this.cleanApiData = Cleaner(mockObj);
   }
   
   componentDidMount() {
-    fetch(`http://api.wunderground.com/api/81347f06b321e144/conditions/forecast10day/hourly10day/q/${this.state.state}/${this.state.city}.json`).then(response => {
+    fetch(`http://api.wunderground.com/api/81347f06b321e144/conditions/forecast10day/hourly10day/q/${ this.state.state }/${ this.state.city }.json`).then(response => {
       response.json().then(data => {
         let cleanData = Cleaner(data)
-        this.setState({apiData: cleanData})
+        this.setState({ apiData: cleanData })
       })
     }).catch(error => console.log(error))
   }
@@ -38,6 +37,7 @@ class App extends Component {
   
   render() {
     if (!this.state.rendered) {
+      //set rendered to true & return the following:
       return (
         <div className="App">
           <Search submitLocation={ this.submitLocation }  />

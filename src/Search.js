@@ -11,8 +11,8 @@ class Search extends Component {
   }
 
   updateLocation = (event) => {
-    const {name, value} = event.target
-    this.setState({[name]: value})
+    const { name, value } = event.target
+    this.setState({ [name]: value })
   }
 
   render() {
