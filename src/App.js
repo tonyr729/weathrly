@@ -12,7 +12,8 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      apiData: {},
+      rendered: false,
+      apiData: mockObj,
       city: 'San_Francisco',
       state: 'CA'
       //7hour/10day toggle
@@ -31,20 +32,29 @@ class App extends Component {
   
   
   submitLocation = ({city, state}) => {
-    //set state for city and state
+    console.log(city, state)
+    // this.setState({city: city, state: state})
   }
   
   render() {
-    return (
-      <div className="App">
-        {/* <Search submitLocation={ this.submitLocation }  /> */}
-        {/* <CurrentWeather currentWeather={this.currentDayObject} />
-        <button className="seven-hour-button">7 hour</button>
-        <button className="ten-day-button">10 day</button> */}
-        {/* <SevenHour data={this.cleanApiData.sevenHourArray}/>  */}
-        {/* <TenDay data={this.createTenDayArray()}/> */}
-      </div>
-    );
+    if (!this.state.rendered) {
+      return (
+        <div className="App">
+          <Search submitLocation={ this.submitLocation }  />
+        </div>
+      )
+    } else {
+      return (
+        <div className="App">
+          <Search submitLocation={ this.submitLocation }  />
+          <CurrentWeather currentWeather={ this.state.apiData.currentDayObject } />
+          <button className="seven-hour-button">7 hour</button>
+          <button className="ten-day-button">10 day</button>
+          <SevenHour data={ this.state.apiData.sevenHourArray } /> 
+          <TenDay data={ this.state.apiData.tenDayArray }/>
+        </div>
+      );
+    }
   }
 }
 
