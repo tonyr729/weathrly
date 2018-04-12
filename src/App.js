@@ -12,18 +12,26 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      //location input (passed as prop from App.js),
+      apiData: {},
+      city: 'San_Francisco',
+      state: 'CA'
       //7hour/10day toggle
     }
-    this.cleanApiData = Cleaner(mockObj);
-    debugger; 
+    // this.cleanApiData = Cleaner(mockObj);
   }
   
-
+  componentDidMount() {
+    fetch(`http://api.wunderground.com/api/81347f06b321e144/conditions/forecast10day/hourly10day/q/${this.state.state}/${this.state.city}.json`).then(response => {
+      response.json().then(data => {
+        let cleanData = Cleaner(data)
+        this.setState({apiData: cleanData})
+      })
+    }).catch(error => console.log(error))
+  }
   
   
   submitLocation = ({city, state}) => {
-  
+    //set state for city and state
   }
   
   render() {
