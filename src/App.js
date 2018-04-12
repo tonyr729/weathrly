@@ -29,6 +29,11 @@ class App extends Component {
     }
   }
 
+  submitLocation = ({city, state}) => {
+    debugger;
+  }
+
+
   createSevenHourArray = () => {
     return mockObj.hourly_forecast.reduce((cleanArray, hourObj, index) => {
       if (index < 7) {
@@ -57,7 +62,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Search />
+        <Search submitLocation={ this.submitLocation }  />
         <CurrentWeather currentWeather={this.currentDayObject} />
         <button className="seven-hour-button">7 hour</button>
         <button className="ten-day-button">10 day</button>
