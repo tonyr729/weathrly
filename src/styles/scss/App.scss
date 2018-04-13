@@ -27,17 +27,31 @@ body {
   .seven-hour-button,
   .ten-day-button {
     grid-area: 2/2/3/3;
-    width: 100px;
-    height: 25px;
+    width: 127px;
+    height: 43px;
     align-self: end;
     justify-self: right;
-    font-size: 1rem;
+    font-size: 1.5rem;
     border: none;
-    margin-right: 20px;
+    background: none;
+    margin-right: 1.5rem;
+    color: white;
+    
+    &:focus {
+      outline: none;
+    }
+
   }
 
   .seven-hour-button {
-    margin-right: 120px;
+    margin-right: 151px;
+  }
+
+  .clicked-button {
+    background: linear-gradient(
+      rgba(grey, 0.3),
+      rgba(grey, 0.3)
+    );
   }
 
 }

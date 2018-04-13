@@ -3,6 +3,7 @@
   display: grid;
   grid-template-rows: 1fr 4fr;
   grid-template-columns: 1fr 1fr;
+  height: 67vh;
 
   .selected-location {
     grid-area: 1/2/2/3;
