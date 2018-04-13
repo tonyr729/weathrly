@@ -1,0 +1,41 @@
+.seven-hour .card {
+  align-self: stretch;
+  text-align: center;
+  height: 30vh;
+  width: 100%;
+  background: linear-gradient(
+    rgba(grey, 0.3),
+    rgba(grey, 0.3)
+  );
+
+  h3 {
+    font-size: 2rem;
+    font-weight: 300;
+  }
+
+  img {
+    width: 4rem;
+  }
+}
+
+.ten-day .card {
+  align-self: stretch;
+  text-align: center;
+  height: 30vh;
+  width: 100%;
+  background: linear-gradient(
+    rgba(grey, 0.3),
+    rgba(grey, 0.3)
+  );
+
+  h3 {
+    font-size: 1.3rem;
+    font-weight: 300;
+    padding-top: 1.1rem;
+  }
+
+  img {
+    width: 4rem;
+    padding: 1.1rem 0;
+  }
+}

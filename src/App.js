@@ -26,7 +26,6 @@ class App extends Component {
       fetch(`http://api.wunderground.com/api/81347f06b321e144/conditions/forecast10day/hourly10day/q/${ this.state.location }.json`).then(response => {
         response.json().then(data => {
           let cleanData = Cleaner(data)
-          debugger;
           this.setState({ apiData: cleanData })
         })
       }).catch(error => console.log(error))

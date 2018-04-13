@@ -319,15 +319,22 @@ body {
   .App .seven-hour-button,
   .App .ten-day-button {
     grid-area: 2/2/3/3;
-    width: 100px;
-    height: 25px;
+    width: 127px;
+    height: 43px;
     align-self: end;
     justify-self: right;
-    font-size: 1rem;
+    font-size: 1.5rem;
     border: none;
-    margin-right: 20px; }
+    background: none;
+    margin-right: 1.5rem;
+    color: white; }
+    .App .seven-hour-button:focus,
+    .App .ten-day-button:focus {
+      outline: none; }
   .App .seven-hour-button {
-    margin-right: 120px; }
+    margin-right: 151px; }
+  .App .clicked-button {
+    background: linear-gradient(rgba(128, 128, 128, 0.3), rgba(128, 128, 128, 0.3)); }
 
 .search {
   grid-area: 1/1/2/2;
@@ -358,7 +365,8 @@ body {
   grid-area: 1/1/3/3;
   display: grid;
   grid-template-rows: 1fr 4fr;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: 1fr 1fr;
+  height: 67vh; }
   .current-weather .selected-location {
     grid-area: 1/2/2/3;
     margin: 1.5rem;
@@ -390,9 +398,42 @@ body {
       font-weight: 300; }
 
 .seven-hour {
-  display: none; }
+  visibility: hidden;
+  grid-area: 3/1/4/3;
+  display: flex;
+  flex-direction: row;
+  margin: 0 1.5rem 0 1.5rem; }
 
 .ten-day {
-  display: none; }
+  grid-area: 3/1/4/3;
+  display: flex;
+  flex-direction: row;
+  margin: 0 1.5rem 0 1.5rem; }
+
+.seven-hour .card {
+  align-self: stretch;
+  text-align: center;
+  height: 30vh;
+  width: 100%;
+  background: linear-gradient(rgba(128, 128, 128, 0.3), rgba(128, 128, 128, 0.3)); }
+  .seven-hour .card h3 {
+    font-size: 2rem;
+    font-weight: 300; }
+  .seven-hour .card img {
+    width: 4rem; }
+
+.ten-day .card {
+  align-self: stretch;
+  text-align: center;
+  height: 30vh;
+  width: 100%;
+  background: linear-gradient(rgba(128, 128, 128, 0.3), rgba(128, 128, 128, 0.3)); }
+  .ten-day .card h3 {
+    font-size: 1.3rem;
+    font-weight: 300;
+    padding-top: 1.1rem; }
+  .ten-day .card img {
+    width: 4rem;
+    padding: 1.1rem 0; }
 
 /*# sourceMappingURL=index.css.map */
