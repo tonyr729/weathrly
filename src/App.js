@@ -12,32 +12,37 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      rendered: false,
-      apiData: {},
-      city: 'Denver',
-      state: 'CO'
+      apiData: null,
+      location: ''
       //7hour/10day toggle
+    }
+
+  this.getApiData = this.getApiData.bind(this);
+  this.submitLocation = this.submitLocation.bind(this);
+  }
+  
+  getApiData() {
+    if (this.state.location) {
+      fetch(`http://api.wunderground.com/api/81347f06b321e144/conditions/forecast10day/hourly10day/q/${ this.state.location }.json`).then(response => {
+        response.json().then(data => {
+          let cleanData = Cleaner(data)
+          debugger;
+          this.setState({ apiData: cleanData })
+        })
+      }).catch(error => console.log(error))
     }
   }
   
-  componentDidMount() {
-    fetch(`http://api.wunderground.com/api/81347f06b321e144/conditions/forecast10day/hourly10day/q/${ this.state.state }/${ this.state.city }.json`).then(response => {
-      response.json().then(data => {
-        let cleanData = Cleaner(data)
-        this.setState({ apiData: cleanData })
-      })
-    }).catch(error => console.log(error))
+  submitLocation({ userInputLocation }) {
+    this.setState({ location: userInputLocation }, this.getApiData)
   }
+
+  //displayWelcome()
+  //displayApp()
   
-  
-  submitLocation = ({city, state}) => {
-    console.log(city, state)
-    // this.setState({city: city, state: state})
-  }
-  
+  //put conditional inside the return, inside the App div
   render() {
-    if (!this.state.rendered) {
-      //set rendered to true & return the following:
+    if (!this.state.apiData) {
       return (
         <div className="App">
           <Search submitLocation={ this.submitLocation }  />
