@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from '../App';
+import {shallow} from 'enzyme';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
@@ -10,7 +11,7 @@ it('renders without crashing', () => {
 
 //set up a beforeEach of varibles for fetch data to change in one place
 
-describe('Current Weather') {
+describe('Current Weather', () => {
 
   it('should have a name of the current city', () => {
     //test this.name is equal to current city from API/moch data
@@ -36,5 +37,5 @@ describe('Current Weather') {
     //test this.summary equals the data of weather observation data
   });
 
-}
+})
 

@@ -12,39 +12,54 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      apiData: {},
-      city: 'San_Francisco',
-      state: 'CA'
+      apiData: null,
+      location: ''
       //7hour/10day toggle
     }
-    // this.cleanApiData = Cleaner(mockObj);
+
+  this.getApiData = this.getApiData.bind(this);
+  this.submitLocation = this.submitLocation.bind(this);
   }
   
-  componentDidMount() {
-    fetch(`http://api.wunderground.com/api/81347f06b321e144/conditions/forecast10day/hourly10day/q/${this.state.state}/${this.state.city}.json`).then(response => {
-      response.json().then(data => {
-        let cleanData = Cleaner(data)
-        this.setState({apiData: cleanData})
-      })
-    }).catch(error => console.log(error))
+  getApiData() {
+    if (this.state.location) {
+      fetch(`http://api.wunderground.com/api/81347f06b321e144/conditions/forecast10day/hourly10day/q/${ this.state.location }.json`).then(response => {
+        response.json().then(data => {
+          let cleanData = Cleaner(data)
+          debugger;
+          this.setState({ apiData: cleanData })
+        })
+      }).catch(error => console.log(error))
+    }
   }
   
-  
-  submitLocation = ({city, state}) => {
-    //set state for city and state
+  submitLocation({ userInputLocation }) {
+    this.setState({ location: userInputLocation }, this.getApiData)
   }
+
+  //displayWelcome()
+  //displayApp()
   
+  //put conditional inside the return, inside the App div
   render() {
-    return (
-      <div className="App">
-        {/* <Search submitLocation={ this.submitLocation }  /> */}
-        {/* <CurrentWeather currentWeather={this.currentDayObject} />
-        <button className="seven-hour-button">7 hour</button>
-        <button className="ten-day-button">10 day</button> */}
-        {/* <SevenHour data={this.cleanApiData.sevenHourArray}/>  */}
-        {/* <TenDay data={this.createTenDayArray()}/> */}
-      </div>
-    );
+    if (!this.state.apiData) {
+      return (
+        <div className="App">
+          <Search submitLocation={ this.submitLocation }  />
+        </div>
+      )
+    } else {
+      return (
+        <div className="App">
+          <Search submitLocation={ this.submitLocation }  />
+          <CurrentWeather currentWeather={ this.state.apiData.currentDayObject } />
+          <button className="seven-hour-button">7 hour</button>
+          <button className="ten-day-button">10 day</button>
+          <SevenHour data={ this.state.apiData.sevenHourArray } /> 
+          <TenDay data={ this.state.apiData.tenDayArray }/>
+        </div>
+      );
+    }
   }
 }
 

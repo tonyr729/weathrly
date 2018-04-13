@@ -4,15 +4,12 @@ class Search extends Component {
   constructor() {
     super();
     this.state = {
-      city: "",
-      state: ""
+      userInputLocation: ""
     };
-
   }
 
   updateLocation = (event) => {
-    const {name, value} = event.target
-    this.setState({[name]: value})
+    this.setState({ userInputLocation: event.target.value })
   }
 
   render() {
@@ -22,14 +19,10 @@ class Search extends Component {
         event.preventDefault();
         this.props.submitLocation(this.state);
         } }>
-        <input placeholder="Enter your city"
-               value={ this.state.city } 
+        <input placeholder="Denver, CO"
+               value={ this.state.userInputLocation } 
                onChange={ this.updateLocation }
-               name='city' />
-        <input placeholder="Enter your state" 
-               value={ this.state.state }  
-               onChange={ this.updateLocation } 
-               name='state'/>
+               />
         <input type='submit' value='Search' />
       </form>
       </div>
