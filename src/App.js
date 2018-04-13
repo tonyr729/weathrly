@@ -5,6 +5,7 @@ import mockObj from './MockObj';
 import SevenHour from './SevenHour';
 import TenDay from './TenDay';
 import Cleaner from './Cleaner';
+import ForecastToggle from './ForecastToggle'
 
 
 
@@ -13,12 +14,14 @@ class App extends Component {
     super()
     this.state = {
       apiData: null,
-      location: ''
-      //7hour/10day toggle
+      location: '',
+      sevenHour: true,
+      tenDay: false
     }
 
   this.getApiData = this.getApiData.bind(this);
   this.submitLocation = this.submitLocation.bind(this);
+  this.toggleCardsDisplay = this.toggleCardsDisplay.bind(this);
   }
   
   getApiData() {
@@ -29,6 +32,14 @@ class App extends Component {
           this.setState({ apiData: cleanData })
         })
       }).catch(error => console.log(error))
+    }
+  }
+
+  toggleCardsDisplay(buttonName) {
+    if (buttonName === "sevenHour") {
+      this.setState({ sevenHour: true, tenDay: false })
+    } else {
+      this.setState({ sevenHour: false, tenDay: true })
     }
   }
   
@@ -52,10 +63,9 @@ class App extends Component {
         <div className="App">
           <Search submitLocation={ this.submitLocation }  />
           <CurrentWeather currentWeather={ this.state.apiData.currentDayObject } />
-          <button className="seven-hour-button">7 hour</button>
-          <button className="ten-day-button">10 day</button>
-          <SevenHour data={ this.state.apiData.sevenHourArray } /> 
-          <TenDay data={ this.state.apiData.tenDayArray }/>
+          <ForecastToggle toggleCardsDisplay={ this.toggleCardsDisplay }/>
+          <SevenHour data={ this.state.apiData.sevenHourArray } buttonState={ this.state.sevenHour } /> 
+          <TenDay data={ this.state.apiData.tenDayArray  } buttonState={ this.state.tenDay } />
         </div>
       );
     }

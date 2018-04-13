@@ -1,12 +1,10 @@
-import React from 'react';
-
 const cleanApiData = (apiData) => {
   let currentDayObject = {
     location: apiData.current_observation.display_location.full,
     currentInfo: {
       day: apiData.forecast.txt_forecast.forecastday[0].title,
       condition: apiData.current_observation.weather,
-      temp: apiData.current_observation.temp_f,
+      temp: Math.round(apiData.current_observation.temp_f),
       icon: apiData.current_observation.icon_url
     },
     forecast: {
