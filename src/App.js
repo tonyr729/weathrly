@@ -46,7 +46,7 @@ class App extends Component {
 
   //should we move this out of App? 
   toggleForecastBtnState(buttonName) {
-    if (buttonName === "sevenHour") {
+    if (buttonName === 'sevenHour') {
       this.setState({ sevenHourBtnClicked: true, tenDayBtnClicked: false })
     } else {
       this.setState({ sevenHourBtnClicked: false, tenDayBtnClicked: true })

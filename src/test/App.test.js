@@ -39,38 +39,42 @@ describe('App', () => {
     expect(renderedApp.state('location')).toEqual(expected.location)
     expect(renderedApp.state('sevenHourBtnClicked')).toEqual(expected.sevenHourBtnClicked)
     expect(renderedApp.state('tenDayBtnClicked')).toEqual(expected.tenDayBtnClicked)
-
   })
 
-  it.skip('should change the location in state based on user input', () => {
-    let shallowApp = shallow(<App />)
-    let appInst = shallowApp.instance()
-    let expectation = 'denver'
+  it('should change the location in state based on user input', () => {
+    let appInst = renderedApp.instance();
+    appInst.getApiData = jest.fn();
+    let expectation = 'denver';
 
-    console.log(appInst.state)
-
-    appInst.submitLocation(expectation);
-    
-    let waitLog = console.log(appInst.state)
-
-    setTimeout(waitLog, 7000)
-    
+    appInst.submitLocation({ userInputLocation: expectation });
     expect(renderedApp.state('location')).toEqual(expectation);
-
   })
 
+  //how do we test api calls?
   it.skip('should fetch Api data based on the location set in state', () => {
+    renderedApp.setState({ location: 'Denver, CO' })
+    let appInst = renderedApp.instance();
     
+    appInst.getApiData();
+    expect(renderedApp.state('apiData')).toHaveProperty('current_observation')
   })
 
-  it.skip('should toggle the forecast button values in state', () => {
-    
+  it('should toggle the forecast button values in state', () => {
+    let appInst = renderedApp.instance();
+    appInst.getApiData = jest.fn();
+
+    appInst.toggleForecastBtnState('tenDay');
+    expect(renderedApp.state('sevenHourBtnClicked')).toEqual(false);
+    expect(renderedApp.state('tenDayBtnClicked')).toEqual(true);
+
+    appInst.toggleForecastBtnState('sevenHour');
+    expect(renderedApp.state('sevenHourBtnClicked')).toEqual(true);
+    expect(renderedApp.state('tenDayBtnClicked')).toEqual(false);
   })
 
   it('should render a welcome screen with a Search component', () => {
 
     expect(renderedApp.find(Search).length).toEqual(1)
-
   })
 
   it('should render a main screen with Search, CurrentWeather, ForecastToggle, SevenHour, and TenDay components', () => {
@@ -81,7 +85,6 @@ describe('App', () => {
     expect(renderedApp.find(ForecastToggle).length).toEqual(1)
     expect(renderedApp.find(SevenHour).length).toEqual(1)
     expect(renderedApp.find(TenDay).length).toEqual(1)
-
   })
 
   it('should only render the main screen if apiData in state is not null', () => {
@@ -92,7 +95,6 @@ describe('App', () => {
 
     expect(renderedApp.find('Welcome').length).toEqual(0)
     expect(renderedApp.find(SevenHour).length).toEqual(1)
-
   })
   
 
