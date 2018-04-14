@@ -27,9 +27,12 @@ class App extends Component {
   
   submitLocation({ userInputLocation }) {
     this.setState({ location: userInputLocation }, this.getApiData)
+    localStorage.setItem('weathrly', userInputLocation);
   }
 
-  //on page load
+  componentDidMount() {
+    this.setState({ location: localStorage.getItem(localStorage.key('weathrly')) }, this.getApiData);
+  }
     // storedLocation = 'Denver, CO'
     // submitLocation(storedLocation)
   
