@@ -28,6 +28,10 @@ class App extends Component {
   submitLocation({ userInputLocation }) {
     this.setState({ location: userInputLocation }, this.getApiData)
   }
+
+  //on page load
+    // storedLocation = 'Denver, CO'
+    // submitLocation(storedLocation)
   
   getApiData() {
     if (this.state.location) {
