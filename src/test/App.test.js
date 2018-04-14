@@ -9,33 +9,36 @@ it('renders without crashing', () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
-//set up a beforeEach of varibles for fetch data to change in one place
+describe('App', () => {
 
-describe('Current Weather', () => {
+    it('should have a default state with apiData, location, sevenHourBtnClicked, tenDayBtnClicked', () => {
 
-  it('should have a name of the current city', () => {
-    //test this.name is equal to current city from API/moch data
-  });
+    })
 
-  it('should have a condition of the current weather', () => {
-    //test this.condition is equal to current city condition
-  });
+    it('should change the location in state based on user input', () => {
+      
+    })
 
-  it('should know the current day', () => {
-    //test this.day equals current day
-  });
+    it('should fetch Api data based on the location set in state', () => {
+      
+    })
 
-  it('should know the temprature', () => {
-    //test this.temp is equal to current city temp
-  });
+    it('should toggle the forecast button values in state', () => {
+      
+    })
 
-  it('should know the current high and low temp', () => {
-    //test this.highLow is equal to current city temp high and low
-  });
+    it('should render a welcome screen with a Search component', () => {
 
-  it('should know the summary of weather', () => {
-    //test this.summary equals the data of weather observation data
-  });
+    })
+
+    it('should render a main screen with Search, CurrentWeather, ForecastToggle, SevenHour, and TenDay components', () => {
+      
+    })
+
+    it('should only render the main screen if apiData in state is not null', () => {
+      
+    })
+  
 
 })
 
