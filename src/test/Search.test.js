@@ -41,17 +41,6 @@ describe('Search', () => {
 
     expect(spy).toBeCalledWith(searchInst.state);
   })
-  
-  //simulate an event and test that our actual component method was invoked (not a mock method)
-  it.skip('should call sendLocation method when the form is submitted', () => {
-    const mockedEvent = { preventDefault: () => {} }
-    const searchInst = renderedSearch.instance();
-    const spy = jest.spyOn(searchInst, 'sendLocation');
-
-    renderedSearch.find('form').simulate('submit', mockedEvent);
-    
-    expect(renderedSearch.sendLocation).toBeCalled();
-  })
 
   //test render
   it('', () => {

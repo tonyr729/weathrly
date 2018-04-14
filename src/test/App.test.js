@@ -7,13 +7,15 @@ import { read } from 'fs';
 import MockObj from '../MockObj'
 import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
+import LocalStorageMock from '../LocalStorageMock';
 
-import Search from '../Search'
-import CurrentWeather from '../CurrentWeather'
-import ForecastToggle from '../ForecastToggle'
-import SevenHour from '../SevenHour'
-import TenDay from '../TenDay'
+import Search from '../Search';
+import CurrentWeather from '../CurrentWeather';
+import ForecastToggle from '../ForecastToggle';
+import SevenHour from '../SevenHour';
+import TenDay from '../TenDay';
 
+global.localStorage = new LocalStorageMock;
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
@@ -23,6 +25,8 @@ it('renders without crashing', () => {
 
 describe('App', () => {
   let renderedApp;
+  let localStorage;
+
   beforeEach(() => {
     renderedApp = shallow(<App />);
   })
