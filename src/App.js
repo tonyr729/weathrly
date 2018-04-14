@@ -8,8 +8,6 @@ import Cleaner from './Cleaner';
 import ForecastToggle from './ForecastToggle'
 import fetchApi from './Api';
 
-
-
 class App extends Component {
   constructor() {
     super()
@@ -31,10 +29,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({ location: localStorage.getItem(localStorage.key('weathrly')) }, this.getApiData);
+    if (localStorage.weathrly) {
+      this.setState({ location: localStorage.getItem(localStorage.key('weathrly')) }, this.getApiData);
+    }
   }
-    // storedLocation = 'Denver, CO'
-    // submitLocation(storedLocation)
   
   getApiData() {
     if (this.state.location) {
