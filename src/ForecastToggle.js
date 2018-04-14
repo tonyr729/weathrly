@@ -13,7 +13,7 @@ class ForecastToggle extends Component {
     event.target.classList.add('clicked-button');
     event.target[sibling].classList.remove('clicked-button')
    
-    this.props.toggleCardsDisplay(event.target.name);
+    this.props.toggleForecastBtnState(event.target.name);
   }
 
   render() {

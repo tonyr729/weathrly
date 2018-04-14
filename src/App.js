@@ -6,6 +6,7 @@ import SevenHour from './SevenHour';
 import TenDay from './TenDay';
 import Cleaner from './Cleaner';
 import ForecastToggle from './ForecastToggle'
+import fetchApi from './Api';
 
 
 
@@ -15,18 +16,22 @@ class App extends Component {
     this.state = {
       apiData: null,
       location: '',
-      sevenHour: true,
-      tenDay: false
+      sevenHourBtnClicked: true,
+      tenDayBtnClicked: false
     }
 
   this.getApiData = this.getApiData.bind(this);
   this.submitLocation = this.submitLocation.bind(this);
-  this.toggleCardsDisplay = this.toggleCardsDisplay.bind(this);
+  this.toggleForecastBtnState = this.toggleForecastBtnState.bind(this);
+  }
+  
+  submitLocation({ userInputLocation }) {
+    this.setState({ location: userInputLocation }, this.getApiData)
   }
   
   getApiData() {
     if (this.state.location) {
-      fetch(`http://api.wunderground.com/api/81347f06b321e144/conditions/forecast10day/hourly10day/q/${ this.state.location }.json`).then(response => {
+      fetchApi(this.state.location).then(response => {
         response.json().then(data => {
           let cleanData = Cleaner(data)
           this.setState({ apiData: cleanData })
@@ -35,39 +40,41 @@ class App extends Component {
     }
   }
 
-  toggleCardsDisplay(buttonName) {
+  //should we move this out of App? 
+  toggleForecastBtnState(buttonName) {
     if (buttonName === "sevenHour") {
-      this.setState({ sevenHour: true, tenDay: false })
+      this.setState({ sevenHourBtnClicked: true, tenDayBtnClicked: false })
     } else {
-      this.setState({ sevenHour: false, tenDay: true })
+      this.setState({ sevenHourBtnClicked: false, tenDayBtnClicked: true })
     }
   }
   
-  submitLocation({ userInputLocation }) {
-    this.setState({ location: userInputLocation }, this.getApiData)
+  displayWelcome() {
+    return (
+      <div className="App">
+        <h1>Good Morning</h1>
+        <Search submitLocation={ this.submitLocation }  />
+      </div>
+    )
   }
 
-  //displayWelcome()
-  //displayApp()
+  displayApp() {
+    return (
+      <div className="App">
+        <Search submitLocation={ this.submitLocation }  />
+        <CurrentWeather currentWeather={ this.state.apiData.currentDayObject } />
+        <ForecastToggle toggleForecastBtnState={ this.toggleForecastBtnState }/>
+        <SevenHour data={ this.state.apiData.sevenHourArray } buttonState={ this.state.sevenHourBtnClicked } /> 
+        <TenDay data={ this.state.apiData.tenDayArray } buttonState={ this.state.tenDayBtnClicked } />
+      </div>
+    )
+  }
   
-  //put conditional inside the return, inside the App div
   render() {
     if (!this.state.apiData) {
-      return (
-        <div className="App">
-          <Search submitLocation={ this.submitLocation }  />
-        </div>
-      )
+      return this.displayWelcome();
     } else {
-      return (
-        <div className="App">
-          <Search submitLocation={ this.submitLocation }  />
-          <CurrentWeather currentWeather={ this.state.apiData.currentDayObject } />
-          <ForecastToggle toggleCardsDisplay={ this.toggleCardsDisplay }/>
-          <SevenHour data={ this.state.apiData.sevenHourArray } buttonState={ this.state.sevenHour } /> 
-          <TenDay data={ this.state.apiData.tenDayArray  } buttonState={ this.state.tenDay } />
-        </div>
-      );
+      return this.displayApp();
     }
   }
 }

@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAAA,QAAS;EAEP,SAAS,EAAE,OAAO;EAClB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,MAAM,EAAE,iBAAiB",
+"mappings": "AAAA,QAAS;EACP,SAAS,EAAE,OAAO;EAClB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,MAAM,EAAE,iBAAiB",
 "sources": ["../scss/TenDay.scss"],
 "names": [],
 "file": "TenDay.css"
