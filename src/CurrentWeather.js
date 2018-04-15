@@ -7,7 +7,7 @@ const CurrentWeather = ({ currentWeather }) => {
       <section className="current-weather-info">
         <h1>{ currentWeather.currentInfo.temp }</h1>
         <p>{ currentWeather.currentInfo.condition }</p>
-        <img src={ currentWeather.currentInfo.icon } />
+        <img className="current-weather-icon" src={`/weather-icons/${ currentWeather.currentInfo.icon }.png`} />
       </section>
       <section className="current-day-forecast">
         <h4>{ currentWeather.currentInfo.day }</h4>
