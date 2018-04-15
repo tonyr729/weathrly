@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import SevenHour from './SevenHour';
 
 class ForecastToggle extends Component {
   

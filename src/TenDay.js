@@ -3,15 +3,20 @@ import Card from './Card';
 
 const TenDay = (props) => {
  
-  let tenDayArray = props.data.map(day => {
-    let highLow = `${day.high} / ${day.low}`
-    return <Card title={day.day} icon={day.icon} temp={highLow} />
+  let tenDayArray = props.data.map((day, index) => {
+    let highLow = `${ day.high } / ${ day.low }`
+    return <Card 
+              title={ day.day } 
+              icon={ day.icon } 
+              temp={ highLow } 
+              key={ index } 
+            />
   })
   
 
   return (
-    <div className={props.buttonState ? "ten-day" : "hidden"}>
-      {tenDayArray}
+    <div className={ props.buttonState ? "ten-day" : "hidden" }>
+      { tenDayArray }
     </div>
   )
 }

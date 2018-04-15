@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Search from './Search';
 import CurrentWeather from './CurrentWeather';
-import mockObj from './MockObj';
 import SevenHour from './SevenHour';
 import TenDay from './TenDay';
 import Cleaner from './Cleaner';
@@ -37,7 +36,7 @@ class App extends Component {
     if (this.state.location) {
       fetchApi(this.state.location).then(response => {
         response.json().then(data => {
-          if (data.response.error) {
+          if (data.response.error || !data.current_observation) {
             alert('Please enter a valid location')
             return;
           } else {
