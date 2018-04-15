@@ -25,7 +25,6 @@ class App extends Component {
   
   submitLocation({ userInputLocation }) {
     this.setState({ location: userInputLocation }, this.getApiData)
-    localStorage.setItem('weathrly', userInputLocation);
   }
 
   componentDidMount() {
@@ -38,8 +37,14 @@ class App extends Component {
     if (this.state.location) {
       fetchApi(this.state.location).then(response => {
         response.json().then(data => {
-          let cleanData = Cleaner(data)
-          this.setState({ apiData: cleanData })
+          if (data.response.error) {
+            alert('Please enter a valid location')
+            return;
+          } else {
+            let cleanData = Cleaner(data)
+            this.setState({ apiData: cleanData })
+            localStorage.setItem('weathrly', this.state.location);
+          }
         })
       }).catch(error => console.log(error))
     }

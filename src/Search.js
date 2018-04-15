@@ -1,16 +1,26 @@
 import React, {Component} from 'react';
+import locationList from './locationList';
+import Trie from '@danielafcarey/autocomplete'
+const locationTree = new Trie();
+locationTree.populate(locationList.data)
 
 class Search extends Component {
   constructor() {
     super();
     this.state = {
-      userInputLocation: ''
+      userInputLocation: '',
+      locationTree: locationTree
     };
   }
 
   updateLocation = (event) => {
     this.setState({ userInputLocation: event.target.value })
+    // showSuggestions()
   }
+
+  // showSuggestions() {
+  //   this.locationTree.suggest(this.state.userInputLocation)
+  // }
 
   sendLocation = (event) => {
     event.preventDefault();
