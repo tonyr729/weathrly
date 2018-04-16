@@ -10,19 +10,19 @@ body {
   color: white;
   box-sizing: border-box; }
 
-.App {
+.Main {
   display: grid;
   grid-template-rows: 10% 40% 30%;
   grid-template-columns: 1fr 1fr; }
-  .App button:hover {
+  .Main button:hover {
     cursor: pointer; }
-  .App .forecast-buttons {
+  .Main .forecast-buttons {
     grid-area: 2/2/3/3;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end; }
-  .App .seven-hour-button,
-  .App .ten-day-button {
+  .Main .seven-hour-button,
+  .Main .ten-day-button {
     width: 127px;
     height: 43px;
     font-size: 1.5rem;
@@ -30,14 +30,24 @@ body {
     background: none;
     color: white;
     border-radius: 10px 10px 0 0; }
-    .App .seven-hour-button:focus,
-    .App .ten-day-button:focus {
+    .Main .seven-hour-button:focus,
+    .Main .ten-day-button:focus {
       outline: none; }
-  .App .ten-day-button {
+  .Main .ten-day-button {
     margin-right: 1.5rem; }
-  .App .clicked-button {
+  .Main .clicked-button {
     background: linear-gradient(rgba(128, 128, 128, 0.3), rgba(128, 128, 128, 0.3)); }
-  .App .hidden {
+  .Main .hidden {
     visibility: hidden; }
+
+.Welcome {
+  width: 70%;
+  margin: 10rem auto;
+  align-items: center;
+  display: flex;
+  flex-direction: column; }
+  .Welcome h1 {
+    font-size: 3rem;
+    font-weight: 300; }
 
 /*# sourceMappingURL=App.css.map */

@@ -7,28 +7,26 @@
   
 
   input {
-    width: 75%;
+    width: 78%;
     height: 100%;
     border: none;
-    font-size: 1rem;
+    font-size: 1.5rem;
 
     &::placeholder {
-      font-size: 1rem;
+      font-size: 1.5rem;
       padding-left: 1rem;
       color: lighten(#000, 85%)
-
     }
   }
 
-  button {
-    width: 20%;
-    height: 100%;
+  .submit-button {
+    width: 21%;
+    height: 2.05rem;
     border: none;
     border-left: 0.1rem solid lightgrey;
     outline: 1px solid #fff;
-    font-size: 1rem;
-    color: lighten(#000, 60%);
-    padding-bottom: 1px;
-    
+    color: #999999;
+    line-height: 1.3;
+
   }
 }

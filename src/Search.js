@@ -54,7 +54,7 @@ class Search extends Component {
                list="DataList"
                />
         <DataList suggestions={ this.state.suggestionsArray }/>
-        <input type='submit' value='Search' />
+        <input className="submit-button" type='submit' value='Search' />
       </form>
       </div>
     )

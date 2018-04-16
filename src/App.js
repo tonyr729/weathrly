@@ -60,8 +60,8 @@ class App extends Component {
   
   displayWelcome() {
     return (
-      <div className="App">
-        <h1>Good Morning</h1>
+      <div className="App Welcome">
+        <h1>What's the weather today?</h1>
         <Search submitLocation={ this.submitLocation }  />
       </div>
     )
@@ -69,7 +69,7 @@ class App extends Component {
 
   displayApp() {
     return (
-      <div className="App">
+      <div className="App Main">
         <Search submitLocation={ this.submitLocation }  />
         <CurrentWeather currentWeather={ this.state.apiData.currentDayObject } />
         <ForecastToggle toggleForecastBtnState={ this.toggleForecastBtnState }/>
