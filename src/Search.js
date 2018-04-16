@@ -41,6 +41,7 @@ class Search extends Component {
   sendLocation = (event) => {
     event.preventDefault();
     this.props.submitLocation(this.state);
+    this.setState({ userInputLocation: '' });
   }
 
   render() {
