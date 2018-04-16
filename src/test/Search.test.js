@@ -8,6 +8,7 @@ configure({ adapter: new Adapter() });
 
 import Search from '../Search';
 import App from '../App';
+import DataList from '../DataList';
 
 describe('Search', () => {
   let renderedSearch;
@@ -42,8 +43,8 @@ describe('Search', () => {
     expect(spy).toBeCalledWith(searchInst.state);
   })
 
-  //test render
-  it('', () => {
-    
+  it('should render a form with two inputs and a DataList component', () => {
+    expect(renderedSearch.find('input').length).toEqual(2)
+    expect(renderedSearch.find(DataList).length).toEqual(1)
   })
 })

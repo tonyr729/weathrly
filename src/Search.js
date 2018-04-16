@@ -29,7 +29,7 @@ class Search extends Component {
     this.clearSuggestions()
     let locationSuggestions;
 
-    if (isNaN(parseInt(this.state.userInputLocation)) && this.state.userInputLocation.length > 1) {
+    if (isNaN(parseInt(this.state.userInputLocation, 10)) && this.state.userInputLocation.length > 1) {
       locationSuggestions = locationTree.suggest(this.state.userInputLocation)
     }
 
@@ -47,8 +47,7 @@ class Search extends Component {
     return (
       <div className="search">
       <form onSubmit={ this.sendLocation }>
-        <input className="awesomplete"
-               placeholder="Denver, CO"
+        <input placeholder="Denver, CO"
                value={ this.state.userInputLocation } 
                onChange={ this.updateLocation }
                list="DataList"
