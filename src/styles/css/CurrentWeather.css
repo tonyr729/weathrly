@@ -45,6 +45,7 @@
     .current-weather .current-day-forecast .day-summary {
       font-size: 1.3rem;
       font-weight: 300;
-      margin-top: 1rem; }
+      margin-top: 1rem;
+      padding-right: 1.5rem; }
 
 /*# sourceMappingURL=CurrentWeather.css.map */

@@ -62,7 +62,6 @@ class App extends Component {
       <div className="App Welcome">
         <h1>What's the weather today?</h1>
         <Search submitLocation={ this.submitLocation } />
-        <p className="invalid-location">Location not found</p>
       </div>
     )
   }
@@ -71,7 +70,6 @@ class App extends Component {
     return (
       <div className="App Main">
         <Search submitLocation={ this.submitLocation } />
-        <p className="invalid-location">Location not found</p>
         <CurrentWeather currentWeather={ this.state.apiData.currentDayObject } />
         <ForecastToggle toggleForecastBtnState={ this.toggleForecastBtnState }/>
         <SevenHour data={ this.state.apiData.sevenHourArray } buttonState={ this.state.sevenHourBtnClicked } /> 
