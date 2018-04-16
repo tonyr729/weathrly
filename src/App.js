@@ -14,7 +14,7 @@ class App extends Component {
       apiData: null,
       location: '',
       sevenHourBtnClicked: true,
-      tenDayBtnClicked: false
+      tenDayBtnClicked: false, 
     }
 
   this.getApiData = this.getApiData.bind(this);
@@ -37,7 +37,7 @@ class App extends Component {
       fetchApi(this.state.location).then(response => {
         response.json().then(data => {
           if (data.response.error || !data.current_observation) {
-            alert('Please enter a valid location')
+            alert("Location not found 😕");
             return;
           } else {
             let cleanData = Cleaner(data)
@@ -49,7 +49,6 @@ class App extends Component {
     }
   }
 
-  //should we move this out of App? 
   toggleForecastBtnState(buttonName) {
     if (buttonName === 'sevenHour') {
       this.setState({ sevenHourBtnClicked: true, tenDayBtnClicked: false })
@@ -62,7 +61,8 @@ class App extends Component {
     return (
       <div className="App Welcome">
         <h1>What's the weather today?</h1>
-        <Search submitLocation={ this.submitLocation }  />
+        <Search submitLocation={ this.submitLocation } />
+        <p className="invalid-location">Location not found</p>
       </div>
     )
   }
@@ -70,7 +70,8 @@ class App extends Component {
   displayApp() {
     return (
       <div className="App Main">
-        <Search submitLocation={ this.submitLocation }  />
+        <Search submitLocation={ this.submitLocation } />
+        <p className="invalid-location">Location not found</p>
         <CurrentWeather currentWeather={ this.state.apiData.currentDayObject } />
         <ForecastToggle toggleForecastBtnState={ this.toggleForecastBtnState }/>
         <SevenHour data={ this.state.apiData.sevenHourArray } buttonState={ this.state.sevenHourBtnClicked } /> 
