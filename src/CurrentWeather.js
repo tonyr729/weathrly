@@ -7,9 +7,9 @@ const CurrentWeather = ({ currentWeather }) => {
       <section className="current-weather-info">
         <h1>{ currentWeather.currentInfo.temp }</h1>
         <p>{ currentWeather.currentInfo.condition }</p>
-        <img className="current-weather-icon" src={`/weather-icons/${ currentWeather.currentInfo.icon }.png`} />
       </section>
       <section className="current-day-forecast">
+        <img className="current-weather-icon" src={`/weather-icons/${ currentWeather.currentInfo.icon }.png`} />
         <h4>{ currentWeather.currentInfo.day }</h4>
         <p className="day-high-low">High: { currentWeather.forecast.high } / Low: { currentWeather.forecast.low }</p>
         <p className="day-summary">{ currentWeather.forecast.summary }</p>
