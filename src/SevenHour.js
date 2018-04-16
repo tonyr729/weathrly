@@ -2,7 +2,6 @@ import React from 'react';
 import Card from './Card';
 
 const SevenHour = (props) => {
-
   let sevenHourArray = props.data.map((hour, index) => {
     return <Card 
               title={ hour.hour } 

@@ -5,20 +5,20 @@ const cleanApiData = (apiData) => {
       day: apiData.forecast.txt_forecast.forecastday[0].title,
       condition: apiData.current_observation.weather,
       temp: Math.round(apiData.current_observation.temp_f),
-      icon: apiData.current_observation.icon_url
+      icon: apiData.current_observation.icon
     },
     forecast: {
       high: apiData.forecast.simpleforecast.forecastday[0].high.fahrenheit,
       low: apiData.forecast.simpleforecast.forecastday[0].low.fahrenheit,
-      summary: apiData.forecast.txt_forecast.forecastday[0].fcttext_metric
+      summary: apiData.forecast.txt_forecast.forecastday[0].fcttext
     }
   }
   
   let sevenHourArray = () => {
     return apiData.hourly_forecast.map((hourObj) => {
         return {
-          hour: hourObj.FCTTIME.civil, 
-          icon: hourObj.icon_url, 
+          hour: hourObj.FCTTIME.civil.split(':')[0] + hourObj.FCTTIME.ampm,
+          icon: hourObj.icon, 
           temp: hourObj.temp.english,
           key: hourObj.FCTTIME.hour
         };
@@ -29,7 +29,7 @@ const cleanApiData = (apiData) => {
     return apiData.forecast.simpleforecast.forecastday.map((day, index) => {
       return {
         day: day.date.weekday,
-        icon: day.icon_url,
+        icon: day.icon,
         high: day.high.fahrenheit,
         low: day.low.fahrenheit,
         key: day.period
