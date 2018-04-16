@@ -1,7 +1,6 @@
 body {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../assets/yos.jpeg");
   background-size: 2000px;
-  background-repeat: no-repeat;
   height: 100vh;
   overflow: hidden;
   margin: 0;
@@ -39,7 +38,7 @@ body {
   .Main .clicked-button {
     background: linear-gradient(rgba(128, 128, 128, 0.3), rgba(128, 128, 128, 0.3)); }
   .Main .hidden {
-    visibility: hidden; }
+    display: none; }
 
 .Welcome {
   width: 70%;
