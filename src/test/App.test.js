@@ -1,14 +1,13 @@
-// import setupTest from './setupTest';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '../App';
 import { shallow, configure } from 'enzyme';
 import { read } from 'fs';
-import MockObj from '../MockObj'
 import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 import LocalStorageMock from '../LocalStorageMock';
+import MockObj from '../MockObj'
 
+import App from '../App';
 import Search from '../Search';
 import CurrentWeather from '../CurrentWeather';
 import ForecastToggle from '../ForecastToggle';
@@ -52,15 +51,6 @@ describe('App', () => {
 
     appInst.submitLocation({ userInputLocation: expectation });
     expect(renderedApp.state('location')).toEqual(expectation);
-  })
-
-  //how do we test api calls?
-  it.skip('should fetch Api data based on the location set in state', () => {
-    renderedApp.setState({ location: 'Denver, CO' })
-    let appInst = renderedApp.instance();
-    
-    appInst.getApiData();
-    expect(renderedApp.state('apiData')).toHaveProperty('current_observation')
   })
 
   it('should toggle the forecast button values in state', () => {
