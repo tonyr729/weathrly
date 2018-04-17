@@ -15,6 +15,18 @@
     .ten-day .card {
       width: 20%; } }
 @media only screen and (max-width: 625px) {
+  .Welcome {
+    margin: 3rem auto; }
+    .Welcome .search {
+      width: 70vw; }
+      .Welcome .search input {
+        font-size: inherit;
+        height: 2rem; }
+        .Welcome .search input::placeholder {
+          font-size: 0.8rem; }
+      .Welcome .search .submit-button {
+        font-size: 0.8rem; }
+
   .Main .search {
     grid-area: 1/1/2/3;
     width: inherit; }
