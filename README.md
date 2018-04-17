@@ -31,12 +31,14 @@ Design layout
 
 Welcome screen
 
-<img width="1397" alt="screen shot 2018-04-16 at 7 30 18 pm" src="https://user-images.githubusercontent.com/34175382/38843538-ab9e66cc-41ac-11e8-9043-a515795b4f31.png">
+<img width="1229" alt="screen shot 2018-04-16 at 7 28 49 pm" src="https://user-images.githubusercontent.com/34175382/38843539-abaef320-41ac-11e8-9863-22fe80b8d6df.png">
+
 
 
 Main screen
 
-<img width="1229" alt="screen shot 2018-04-16 at 7 28 49 pm" src="https://user-images.githubusercontent.com/34175382/38843539-abaef320-41ac-11e8-9863-22fe80b8d6df.png">
+<img width="1397" alt="screen shot 2018-04-16 at 7 30 18 pm" src="https://user-images.githubusercontent.com/34175382/38843538-ab9e66cc-41ac-11e8-9043-a515795b4f31.png">
+
 
 
 Mobile (iPhone 6/7/8)
