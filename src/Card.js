@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Card = (props) => {
+const Card = ({ title, icon, temp }) => {
   return (
     <div className="card">
-      <h3 className="title">{ props.title }</h3>
-      <img src={`/weather-icons/${ props.icon }.png`}
+      <h3 className="title">{ title }</h3>
+      <img src={`/weather-icons/${ icon }.png`}
            alt="weather icon"
            />
-      <h3 className="temp">{ props.temp } ℉</h3>
+      <h3 className="temp">{ temp } ℉</h3>
     </div>
   )
 }

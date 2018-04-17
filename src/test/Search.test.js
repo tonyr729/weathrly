@@ -40,7 +40,7 @@ describe('Search', () => {
     
     searchInst.sendLocation(mockedEvent);
 
-    expect(spy).toBeCalledWith(searchInst.state);
+    expect(spy).toBeCalledWith(searchInst.state.userInputLocation);
   })
 
   it('should render a form with two inputs and a DataList component', () => {
