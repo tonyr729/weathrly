@@ -299,7 +299,7 @@ template {
   display: none; }
 
 body {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../assets/yos.jpeg");
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../assets/rainy.jpg");
   background-size: 2000px;
   height: 100vh;
   overflow: hidden;
