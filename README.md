@@ -17,6 +17,16 @@ Weathrly is a basic ReactJS app that will tell you the current weather and forec
 
 ![whereto_smaller](https://user-images.githubusercontent.com/34175382/38843364-f2f2845a-41ab-11e8-87b2-9098dfbbc971.jpg)
 
+### *Wireframing:* 
+
+Whiteboarding
+
+![20180409_145208](https://user-images.githubusercontent.com/34175382/38845934-0faebe28-41b7-11e8-8ee1-c80f94538b28.jpg)
+
+Design layout
+
+![weathrly_7](https://user-images.githubusercontent.com/34175382/38845936-1190eac2-41b7-11e8-9ba0-2547fcf6f077.jpg)
+
 ### *Our Comp:* 
 
 Welcome screen
