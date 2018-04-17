@@ -25,6 +25,27 @@
 
 
 @media only screen and (max-width: 625px) {
+  .Welcome {
+    margin: 3rem auto;
+
+    .search {
+      width: 70vw;
+
+      input {
+        font-size: inherit;
+        height: 2rem;
+
+        &::placeholder {
+          font-size: 0.8rem;
+        }
+      }
+      
+      .submit-button {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
   .Main {
     .search {
       grid-area: 1/1/2/3;
