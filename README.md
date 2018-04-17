@@ -1,6 +1,6 @@
-       # Weathrly
+# Weathrly
 
-# Synopsis
+## Synopsis
 
 Weathrly is a basic ReactJS app that will tell you the current weather and forecast of the user-submitted location. 
 
