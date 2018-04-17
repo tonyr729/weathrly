@@ -24,7 +24,6 @@ it('renders without crashing', () => {
 
 describe('App', () => {
   let renderedApp;
-  let localStorage;
 
   beforeEach(() => {
     renderedApp = shallow(<App />);
@@ -49,13 +48,12 @@ describe('App', () => {
     appInst.getApiData = jest.fn();
     let expectation = 'denver';
 
-    appInst.submitLocation({ userInputLocation: expectation });
+    appInst.submitLocation(expectation);
     expect(renderedApp.state('location')).toEqual(expectation);
   })
 
   it('should toggle the forecast button values in state', () => {
     let appInst = renderedApp.instance();
-    appInst.getApiData = jest.fn();
 
     appInst.toggleForecastBtnState('tenDay');
     expect(renderedApp.state('sevenHourBtnClicked')).toEqual(false);
@@ -72,8 +70,8 @@ describe('App', () => {
   })
 
   it('should render a main screen with Search, CurrentWeather, ForecastToggle, SevenHour, and TenDay components', () => {
-    renderedApp.setState({ apiData: MockObj});
-    
+    renderedApp.setState({ apiData: MockObj });
+
     expect(renderedApp.find(Search).length).toEqual(1)
     expect(renderedApp.find(CurrentWeather).length).toEqual(1)
     expect(renderedApp.find(ForecastToggle).length).toEqual(1)
@@ -82,15 +80,15 @@ describe('App', () => {
   })
 
   it('should only render the main screen if apiData in state is not null', () => {
-    expect(renderedApp.find('h1').length).toEqual(1)
+    expect(renderedApp.find('.Welcome').length).toEqual(1)
     expect(renderedApp.find(SevenHour).length).toEqual(0)
 
-    renderedApp.setState({ apiData: MockObj});
+    renderedApp.setState({ apiData: MockObj });
 
-    expect(renderedApp.find('Welcome').length).toEqual(0)
+    expect(renderedApp.find('.Welcome').length).toEqual(0)
     expect(renderedApp.find(SevenHour).length).toEqual(1)
   })
-  
+
 
 })
 

@@ -16,13 +16,7 @@ class Search extends Component {
   }
 
   updateLocation = (event) => {
-    this.setState({ userInputLocation: event.target.value }, this.getSuggestions())
-  }
-  
-  clearSuggestions() {
-    if (this.state.userInputLocation === '') {
-      this.setState({ suggestionsArray: [] })
-    }
+    this.setState({ userInputLocation: event.target.value }, this.getSuggestions)
   }
   
   getSuggestions() {
@@ -37,10 +31,16 @@ class Search extends Component {
       this.setState({suggestionsArray: locationSuggestions})
     }
   }
+  
+  clearSuggestions() {
+    if (this.state.userInputLocation === '') {
+      this.setState({ suggestionsArray: [] })
+    }
+  }
 
   sendLocation = (event) => {
     event.preventDefault();
-    this.props.submitLocation(this.state);
+    this.props.submitLocation(this.state.userInputLocation);
     this.setState({ userInputLocation: '' });
   }
 
@@ -48,7 +48,7 @@ class Search extends Component {
     return (
       <div className="search">
       <form onSubmit={ this.sendLocation }>
-        <input placeholder="Denver, CO"
+        <input placeholder="Enter a city and state"
                value={ this.state.userInputLocation } 
                onChange={ this.updateLocation }
                list="DataList"

@@ -1,9 +1,9 @@
 import React from 'react';
 import Card from './Card';
 
-const TenDay = (props) => {
+const TenDay = ({ data, buttonState }) => {
  
-  let tenDayArray = props.data.map((day, index) => {
+  let tenDayArray = data.map((day, index) => {
     let highLow = `${ day.high } / ${ day.low }`
     return <Card 
               title={ day.day } 
@@ -15,7 +15,7 @@ const TenDay = (props) => {
   
 
   return (
-    <div className={ props.buttonState ? "ten-day" : "hidden" }>
+    <div className={ buttonState ? "ten-day" : "hidden" }>
       { tenDayArray }
     </div>
   )

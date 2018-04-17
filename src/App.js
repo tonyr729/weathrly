@@ -14,38 +14,42 @@ class App extends Component {
       apiData: null,
       location: '',
       sevenHourBtnClicked: true,
-      tenDayBtnClicked: false, 
+      tenDayBtnClicked: false,
     }
 
-  this.getApiData = this.getApiData.bind(this);
-  this.submitLocation = this.submitLocation.bind(this);
-  this.toggleForecastBtnState = this.toggleForecastBtnState.bind(this);
-  }
-  
-  submitLocation({ userInputLocation }) {
-    this.setState({ location: userInputLocation }, this.getApiData)
+    this.submitLocation = this.submitLocation.bind(this);
+    this.getApiData = this.getApiData.bind(this);
+    this.validateAndCleanApiData = this.validateAndCleanApiData.bind(this);
+    this.toggleForecastBtnState = this.toggleForecastBtnState.bind(this);
   }
 
   componentDidMount() {
     if (localStorage.weathrly) {
-      this.setState({ location: localStorage.getItem(localStorage.key('weathrly')) }, this.getApiData);
+      this.setState({ location: localStorage.getItem('weathrly') }, this.getApiData);
     }
   }
-  
+
+  submitLocation(userInputLocation) {
+    this.setState({ location: userInputLocation }, this.getApiData);
+  }
+
   getApiData() {
     if (this.state.location) {
       fetchApi(this.state.location).then(response => {
-        response.json().then(data => {
-          if (data.response.error || !data.current_observation) {
-            alert("Location not found 😕");
-            return;
-          } else {
-            let cleanData = Cleaner(data)
-            this.setState({ apiData: cleanData })
-            localStorage.setItem('weathrly', this.state.location);
-          }
-        })
+        response.json().then(this.validateAndCleanApiData)
       }).catch(error => console.log(error))
+    }
+  }
+
+  validateAndCleanApiData(data) {
+    if (data.response.error || !data.current_observation) {
+      alert("Location not found 😕");
+      return;
+    } else {
+      let cleanData = Cleaner(data)
+      
+      this.setState({ apiData: cleanData })
+      localStorage.setItem('weathrly', this.state.location);
     }
   }
 
@@ -56,12 +60,12 @@ class App extends Component {
       this.setState({ sevenHourBtnClicked: false, tenDayBtnClicked: true })
     }
   }
-  
+
   displayWelcome() {
     return (
       <div className="App Welcome">
         <h1>What's the weather today?</h1>
-        <Search submitLocation={ this.submitLocation } />
+        <Search submitLocation={this.submitLocation} />
       </div>
     )
   }
@@ -69,15 +73,15 @@ class App extends Component {
   displayApp() {
     return (
       <div className="App Main">
-        <Search submitLocation={ this.submitLocation } />
-        <CurrentWeather currentWeather={ this.state.apiData.currentDayObject } />
-        <ForecastToggle toggleForecastBtnState={ this.toggleForecastBtnState }/>
-        <SevenHour data={ this.state.apiData.sevenHourArray } buttonState={ this.state.sevenHourBtnClicked } /> 
-        <TenDay data={ this.state.apiData.tenDayArray } buttonState={ this.state.tenDayBtnClicked } />
+        <Search submitLocation={this.submitLocation} />
+        <CurrentWeather currentWeather={this.state.apiData.currentDayObject} />
+        <ForecastToggle toggleForecastBtnState={this.toggleForecastBtnState} />
+        <SevenHour data={this.state.apiData.sevenHourArray} buttonState={this.state.sevenHourBtnClicked} />
+        <TenDay data={this.state.apiData.tenDayArray} buttonState={this.state.tenDayBtnClicked} />
       </div>
     )
   }
-  
+
   render() {
     if (!this.state.apiData) {
       return this.displayWelcome();
