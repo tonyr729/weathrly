@@ -38,8 +38,8 @@ Mobile (iPhone 6/7/8)
 
 ---
 
-_(**Turing School of Software & Design Front-end Engineering project - Mod 2:** first real interactions with ReactJS, asynchronous javascript, API calls, and managing the state of an application.)_
-
 ## Contributors
 
 Tony Robertson & Daniela Carey
+
+_(**Turing School of Software & Design Front-end Engineering project - Mod 2:** first real interactions with ReactJS, asynchronous javascript, API calls, and managing the state of an application.)_
