@@ -52,43 +52,82 @@ describe('App', () => {
     expect(renderedApp.state('location')).toEqual(expectation);
   })
 
-  it('should toggle the forecast button values in state', () => {
+  it('when tenDay button is pressed, it should set sevenHourBtnClicked to false and tenDaybtnClicked to true in state', () => {
     let appInst = renderedApp.instance();
-
     appInst.toggleForecastBtnState('tenDay');
+
     expect(renderedApp.state('sevenHourBtnClicked')).toEqual(false);
     expect(renderedApp.state('tenDayBtnClicked')).toEqual(true);
+  })
 
+  it('when sevenHour button is pressed, it should set sevenHourBtnClicked to true and tenDaybtnClicked to false in state', () => {
+    let appInst = renderedApp.instance();
+    appInst.toggleForecastBtnState('tenDay');
     appInst.toggleForecastBtnState('sevenHour');
+
     expect(renderedApp.state('sevenHourBtnClicked')).toEqual(true);
     expect(renderedApp.state('tenDayBtnClicked')).toEqual(false);
   })
 
-  it('should render a welcome screen with a Search component', () => {
+  it('should render a welcome screen with a Search component with the correct props', () => {
+    let expected = { submitLocation: renderedApp.instance().submitLocation }
 
     expect(renderedApp.find(Search).length).toEqual(1)
+    expect(renderedApp.find(Search).props()).toEqual(expected)
   })
 
-  it('should render a main screen with Search, CurrentWeather, ForecastToggle, SevenHour, and TenDay components', () => {
+  it('should render a main screen with a Search component with the correct props', () => {
     renderedApp.setState({ apiData: MockObj });
-
+    let expected = { submitLocation: renderedApp.instance().submitLocation }
+    
     expect(renderedApp.find(Search).length).toEqual(1)
-    expect(renderedApp.find(CurrentWeather).length).toEqual(1)
-    expect(renderedApp.find(ForecastToggle).length).toEqual(1)
-    expect(renderedApp.find(SevenHour).length).toEqual(1)
-    expect(renderedApp.find(TenDay).length).toEqual(1)
+    expect(renderedApp.find(Search).props()).toEqual(expected)
   })
 
-  it('should only render the main screen if apiData in state is not null', () => {
+  it('should render a main screen with a CurrentWeather component with the correct props', () => {
+    renderedApp.setState({ apiData: { currentDayObject: 'kitten' } });
+    let expected = { currentWeather: 'kitten' }
+
+    expect(renderedApp.find(CurrentWeather).length).toEqual(1)
+    expect(renderedApp.find(CurrentWeather).props()).toEqual(expected)
+  })
+
+  it('should render a main screen with a ForecastToggle component with the correct props', () => {
+    renderedApp.setState({ apiData: MockObj });
+    let expected = { toggleForecastBtnState: renderedApp.instance().toggleForecastBtnState }
+
+    expect(renderedApp.find(ForecastToggle).length).toEqual(1)
+    expect(renderedApp.find(ForecastToggle).props()).toEqual(expected)
+  })
+
+  it('should render a main screen with a SevenHour component with the correct props', () => {
+    renderedApp.setState({ apiData: { sevenHourArray: 'kitten' } });
+    let expected = { data: 'kitten' , buttonState: true}
+
+    expect(renderedApp.find(SevenHour).length).toEqual(1)
+    expect(renderedApp.find(SevenHour).props()).toEqual(expected)
+  })
+  it('should render a main screen with a TenDay component with the correct props', () => {
+    renderedApp.setState({ apiData: { tenDayArray: 'kitten' } });
+    let expected = { data: 'kitten' , buttonState: false}
+
+    expect(renderedApp.find(TenDay).length).toEqual(1)
+    expect(renderedApp.find(TenDay).props()).toEqual(expected)
+  })
+
+  it('should render the welcome screen if apiData in state is null', () => {
+    renderedApp.setState({ apiData: null });
+    
     expect(renderedApp.find('.Welcome').length).toEqual(1)
     expect(renderedApp.find(SevenHour).length).toEqual(0)
+  })
 
+  it('should render the main screen if apiData in state is not null', () => {
     renderedApp.setState({ apiData: MockObj });
 
     expect(renderedApp.find('.Welcome').length).toEqual(0)
     expect(renderedApp.find(SevenHour).length).toEqual(1)
   })
-
 
 })
 

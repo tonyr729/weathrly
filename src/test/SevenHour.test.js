@@ -31,4 +31,13 @@ describe('Search', () => {
     
     expect(renderedSevenHour.find(Card).length).toEqual(2);
   })
+
+  it('should render a Card component with the correct props', () => {
+    renderedSevenHour = shallow(<SevenHour data={sevenHourArray.slice(0, 1)} />);
+    let expected = { icon: 'sunny', 
+                     temp: '40', 
+                     title: '2PM' }
+
+    expect(renderedSevenHour.find(Card).props()).toEqual(expected)
+  })
 })

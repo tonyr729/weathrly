@@ -61,6 +61,12 @@ body {
   .hidden {
     display: none;
   }
+
+  .location-error {
+    font-size: 1rem;
+    grid-area: 1/1/2/2;
+    margin: 4rem 1.5rem;
+  }
 }
 
 .Welcome {
@@ -74,6 +80,13 @@ body {
     font-size: 3rem;
     font-weight: 300;
   }
+
+  .location-error {
+    font-size: 1rem;
+    margin: -1rem 18rem 0 0;
+  }
 }
+
+
 
 

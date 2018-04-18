@@ -33,4 +33,13 @@ describe('Search', () => {
     
     expect(renderedTenDay.find(Card).length).toEqual(2);
   })
+
+  it('should render a Card component with the correct props', () => {
+    renderedTenDay = shallow(<TenDay data={tenDayArray.slice(0, 1)} />);
+    let expected = { icon: 'sunny', 
+                     temp: '90 / 10', 
+                     title: 'Wednesday' }
+
+    expect(renderedTenDay.find(Card).props()).toEqual(expected)
+  })
 })
