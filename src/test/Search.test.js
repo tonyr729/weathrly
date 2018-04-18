@@ -12,9 +12,12 @@ import DataList from '../DataList';
 
 describe('Search', () => {
   let renderedSearch;
+  let propFunction;
 
   beforeEach(() => {
-    renderedSearch = shallow(<Search submitLocation={jest.fn()}/>);
+    propFunction = jest.fn();
+    renderedSearch = shallow(<Search submitLocation={propFunction}/>);
+
   })
 
   it('should have a default state of userInputLocation', () => {
@@ -36,11 +39,10 @@ describe('Search', () => {
   it('should send its state to App via submitLocation prop', () => {
     const mockedEvent = { preventDefault: () => {} }
     const searchInst = renderedSearch.instance();
-    const spy = jest.spyOn(searchInst.props, 'submitLocation');
     
     searchInst.sendLocation(mockedEvent);
 
-    expect(spy).toBeCalledWith(searchInst.state.userInputLocation);
+    expect(propFunction).toBeCalledWith(searchInst.state.userInputLocation);
   })
 
   it('should render a form with two inputs and a DataList component', () => {

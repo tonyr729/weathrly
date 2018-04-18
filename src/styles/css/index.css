@@ -339,6 +339,10 @@ body {
     background: linear-gradient(rgba(128, 128, 128, 0.3), rgba(128, 128, 128, 0.3)); }
   .Main .hidden {
     display: none; }
+  .Main .location-error {
+    font-size: 1rem;
+    grid-area: 1/1/2/2;
+    margin: 4rem 1.5rem; }
 
 .Welcome {
   width: 70%;
@@ -349,6 +353,9 @@ body {
   .Welcome h1 {
     font-size: 3rem;
     font-weight: 300; }
+  .Welcome .location-error {
+    font-size: 1rem;
+    margin: -1rem 18rem 0 0; }
 
 .search {
   grid-area: 1/1/2/2;

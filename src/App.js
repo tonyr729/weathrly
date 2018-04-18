@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Search from './Search';
+import InvalidLocation from './InvalidLocation';
 import CurrentWeather from './CurrentWeather';
 import SevenHour from './SevenHour';
 import TenDay from './TenDay';
@@ -15,6 +16,7 @@ class App extends Component {
       location: '',
       sevenHourBtnClicked: true,
       tenDayBtnClicked: false,
+      validLocation: true
     }
 
     this.submitLocation = this.submitLocation.bind(this);
@@ -43,12 +45,11 @@ class App extends Component {
 
   validateAndCleanApiData(data) {
     if (data.response.error || !data.current_observation) {
-      alert("Location not found 😕");
+      this.setState({ validLocation: false });
       return;
     } else {
       let cleanData = Cleaner(data)
-      
-      this.setState({ apiData: cleanData })
+      this.setState({ validLocation: true, apiData: cleanData });
       localStorage.setItem('weathrly', this.state.location);
     }
   }
@@ -65,7 +66,8 @@ class App extends Component {
     return (
       <div className="App Welcome">
         <h1>What's the weather today?</h1>
-        <Search submitLocation={this.submitLocation} />
+        <Search submitLocation={ this.submitLocation } />
+        <InvalidLocation validLocation={ this.state.validLocation }/>
       </div>
     )
   }
@@ -73,11 +75,12 @@ class App extends Component {
   displayApp() {
     return (
       <div className="App Main">
-        <Search submitLocation={this.submitLocation} />
-        <CurrentWeather currentWeather={this.state.apiData.currentDayObject} />
-        <ForecastToggle toggleForecastBtnState={this.toggleForecastBtnState} />
-        <SevenHour data={this.state.apiData.sevenHourArray} buttonState={this.state.sevenHourBtnClicked} />
-        <TenDay data={this.state.apiData.tenDayArray} buttonState={this.state.tenDayBtnClicked} />
+        <Search submitLocation={ this.submitLocation } />
+        <InvalidLocation validLocation={ this.state.validLocation }/>
+        <CurrentWeather currentWeather={ this.state.apiData.currentDayObject } />
+        <ForecastToggle toggleForecastBtnState={ this.toggleForecastBtnState } />
+        <SevenHour data={ this.state.apiData.sevenHourArray } buttonState={ this.state.sevenHourBtnClicked } />
+        <TenDay data={ this.state.apiData.tenDayArray } buttonState={ this.state.tenDayBtnClicked } />
       </div>
     )
   }
