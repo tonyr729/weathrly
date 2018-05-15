@@ -37,6 +37,6 @@ Weathrly is a basic ReactJS app that will tell you the current weather and forec
 
 ## Contributors
 
-[Tony Robertson](https://github.com/tonyr729) & Daniela Carey
+[Tony Robertson](https://github.com/tonyr729) & [Daniela Carey](https://github.com/danielafcarey)
 
 _(**Turing School of Software & Design Front-end Engineering project - Mod 2:** first real interactions with ReactJS, asynchronous javascript, API calls, and managing the state of an application.)_
